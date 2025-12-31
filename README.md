@@ -1,4 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ejemplo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    header { border-bottom: 1px solid #ddd; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mi página de ejemplo</h1>
+  </header>
 
+  <p>¡Hola! Este es un archivo de prueba agregado al repositorio.</p>
+
+  <script>
+    console.log('Página cargada: ejemplo simple');
+  </script>
+</body>
+</html>
 
 /* Estilo actualizado: Futurista, profesional, con estrellas y "AI vibes" */
 /* Variables y tipografía */
