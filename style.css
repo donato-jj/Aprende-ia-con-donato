@@ -1,299 +1,226 @@
-/* ================= CONFIGURACIÓN GENERAL ================= */
-
-* {
-
-    margin: 0;
-
-    padding: 0;
-
-    box-sizing: border-box;
-
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-
-}
-
-body {
-
-    background-color: #05010d;
-
-    color: #ffffff;
-
-    line-height: 1.6;
-
-}
-
-/* ================= HEADER FUTURISTA ================= */
-
-.header {
-
-    position: relative;
-
-    height: 100vh;
-
-    background: radial-gradient(circle at top, #1a0033, #000);
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    overflow: hidden;
-
-}
-
-.header::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 200%;
-
-    height: 200%;
-
-    background: url('https://www.transparenttextures.com/patterns/stardust.png');
-
-    animation: moveStars 60s linear infinite;
-
-}
-
-@keyframes moveStars {
-
-    from { transform: translateY(0); }
-
-    to { transform: translateY(-1000px); }
-
-}
-
-.header-content {
-
-    position: relative;
-
-    text-align: center;
-
-    z-index: 1;
-
-    padding: 20px;
-
-}
-
-.header h1 {
-
-    font-size: 3rem;
-
-    color: #00ffff;
-
-    text-shadow: 0 0 20px #00ffff;
-
-}
-
-.header p {
-
-    margin: 20px 0;
-
-    color: #bdbdff;
-
-}
-
-/* ================= BOTÓN NEÓN ================= */
-
-.btn-neon {
-
-    display: inline-block;
-
-    padding: 12px 30px;
-
-    color: #00ffff;
-
-    border: 2px solid #00ffff;
-
-    text-decoration: none;
-
-    border-radius: 30px;
-
-    transition: 0.3s;
-
-    box-shadow: 0 0 15px #00ffff;
-
-}
-
-.btn-neon:hover {
-
-    background: #00ffff;
-
-    color: #000;
-
-    box-shadow: 0 0 30px #00ffff;
-
-}
-
-/* ================= SECCIÓN ABOUT ================= */
-
-.about {
-
-    padding: 60px 20px;
-
-    text-align: center;
-
-    background: linear-gradient(180deg, #000, #120022);
-
-}
-
-.about h2 {
-
-    color: #7cff00;
-
-    text-shadow: 0 0 10px #7cff00;
-
-    margin-bottom: 20px;
-
-}
-
-/* ================= FEATURES ================= */
-
-.features {
-
-    padding: 60px 20px;
-
-    background: #070014;
-
-}
-
-.features h2 {
-
-    text-align: center;
-
-    color: #ff00ff;
-
-    margin-bottom: 40px;
-
-    text-shadow: 0 0 15px #ff00ff;
-
-}
-
-.cards {
-
-    display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-
-    gap: 25px;
-
-}
-
-.card {
-
-    background: rgba(255, 255, 255, 0.05);
-
-    border: 1px solid #2b0055;
-
-    border-radius: 15px;
-
-    padding: 25px;
-
-    text-align: center;
-
-    transition: 0.3s;
-
-}
-
-.card span {
-
-    font-size: 2.5rem;
-
-}
-
-.card:hover {
-
-    transform: translateY(-10px);
-
-    box-shadow: 0 0 25px #00ffff;
-
-}
-
-/* ================= SECCIÓN VISUAL ================= */
-
-.visual {
-
-    padding: 80px 20px;
-
-    text-align: center;
-
-    background: radial-gradient(circle, #120022, #000);
-
-}
-
-.space-animation {
-
-    margin: 40px auto;
-
-    width: 200px;
-
-    height: 200px;
-
-    border-radius: 50%;
-
-    border: 2px solid #00ffff;
-
-    box-shadow: 0 0 40px #00ffff;
-
-    animation: pulse 3s infinite;
-
-}
-
-@keyframes pulse {
-
-    0% { box-shadow: 0 0 20px #00ffff; }
-
-    50% { box-shadow: 0 0 60px #7cff00; }
-
-    100% { box-shadow: 0 0 20px #00ffff; }
-
-}
-
-/* ================= CONTACTO ================= */
-
-.contact {
-
-    padding: 60px 20px;
-
-    background: #05010d;
-
-    text-align: center;
-
-}
-
-.contact h2 {
-
-    color: #00ffff;
-
-    margin-bottom: 20px;
-
-}
-
-/* ================= FOOTER ================= */
-
-footer {
-
-    padding: 20px;
-
-    text-align: center;
-
-    background: #000;
-
-    color: #777;
-
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 768px) {
-
-    .header h1 {
-
-        font-size: 2rem;
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aprendizaje de IA | Futuro Tecnológico</title>
+
+<!-- ======= ESTILO CSS ======= -->
+<style>
+  /* ===== RESET ===== */
+  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Orbitron', sans-serif; }
+  html, body { height:100%; overflow-x:hidden; background:#0a0a0a; color:#fff; }
+
+  /* ===== TIPOGRAFÍA Y GRADIENTES ===== */
+  h1, h2, h3, p { margin-bottom:15px; }
+  h1 { font-size:3em; background: linear-gradient(90deg, #00f0ff, #ff00ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  h2 { font-size:2em; color:#0ff; }
+  p { color:#aaa; line-height:1.6; }
+
+  /* ===== CONTENEDORES ===== */
+  header, section, footer { padding:60px 20px; }
+  header { text-align:center; background:linear-gradient(135deg, #1a1a1a, #111); position:relative; overflow:hidden; }
+  section { max-width:1200px; margin:0 auto; }
+
+  /* ===== BOTONES ===== */
+  .btn {
+    padding:12px 25px;
+    margin:10px 5px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:1em;
+    transition:0.4s;
+    background: linear-gradient(45deg, #00f0ff, #ff00ff);
+    color:#000;
+    box-shadow:0 0 10px #00f0ff, 0 0 20px #ff00ff;
+  }
+  .btn:hover { transform:scale(1.1); box-shadow:0 0 20px #0ff, 0 0 40px #f0f; }
+
+  /* ===== CHAT IA ===== */
+  .chat-container {
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:300px;
+    max-height:400px;
+    background:#111;
+    border-radius:15px;
+    box-shadow:0 0 20px #0ff;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    z-index:1000;
+  }
+  .chat-header {
+    padding:10px;
+    background: linear-gradient(90deg,#00f0ff,#ff00ff);
+    color:#000;
+    font-weight:bold;
+    text-align:center;
+  }
+  .chat-messages {
+    flex:1;
+    padding:10px;
+    overflow-y:auto;
+    font-size:0.9em;
+  }
+  .chat-input {
+    display:flex;
+    border-top:1px solid #222;
+  }
+  .chat-input input {
+    flex:1;
+    padding:10px;
+    border:none;
+    background:#111;
+    color:#fff;
+    outline:none;
+  }
+  .chat-input button {
+    padding:10px;
+    border:none;
+    background:#0ff;
+    color:#000;
+    cursor:pointer;
+    transition:0.3s;
+  }
+  .chat-input button:hover { background:#ff0; }
+
+  /* ===== EFECTOS PARTICULAS ===== */
+  #particles-js { position:absolute; width:100%; height:100%; top:0; left:0; z-index:0; }
+
+  /* ===== SECCIONES ===== */
+  .section-title { text-align:center; margin-bottom:40px; }
+  .contact-info a { color:#0ff; text-decoration:none; margin-right:15px; transition:0.3s; }
+  .contact-info a:hover { color:#ff0; }
+</style>
+
+<!-- ===== FUENTES ===== -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- ===== HEADER / INICIO ===== -->
+<header>
+  <canvas id="particles-js"></canvas>
+  <h1>Bienvenido a Futuro Tecnológico</h1>
+  <p>Aprende Inteligencia Artificial y Python en un entorno futurista y elegante.</p>
+</header>
+
+<!-- ===== APRENDIZAJE EN PYTHON ===== -->
+<section id="python">
+  <div class="section-title">
+    <h2>Aprendizaje en Python</h2>
+    <p>Explora nuestros cursos, tutoriales y proyectos prácticos para dominar Python y crear tus propios modelos de IA.</p>
+    <button class="btn">Ver Cursos</button>
+  </div>
+</section>
+
+<!-- ===== IA INTEGRADA ===== -->
+<div class="chat-container" id="chat">
+  <div class="chat-header">Asistente IA</div>
+  <div class="chat-messages" id="chat-messages"></div>
+  <div class="chat-input">
+    <input type="text" id="chat-input" placeholder="Escribe tu pregunta...">
+    <button onclick="sendMessage()">Enviar</button>
+  </div>
+</div>
+
+<!-- ===== CONTACTO ===== -->
+<section id="contacto">
+  <div class="section-title">
+    <h2>Contacto</h2>
+    <p>Puedes comunicarte con nosotros a través de los siguientes medios:</p>
+    <div class="contact-info">
+      <p>Teléfono: <a href="tel:+542235319300">2235319300</a></p>
+      <p>Email: <a href="mailto:donatoconturla100@gmail.com">donatoconturla100@gmail.com</a></p>
+      <p>Instagram: <a href="https://www.instagram.com/donatoacosta12/" target="_blank">@donatoacosta12</a></p>
+      <p>WhatsApp: <a href="https://wa.me/542235319300" target="_blank">2235319300</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCRIPT JS ===== -->
+<script>
+  // ===== CHAT IA SIMPLE =====
+  const chatMessages = document.getElementById('chat-messages');
+  const chatInput = document.getElementById('chat-input');
+
+  function sendMessage() {
+    const msg = chatInput.value.trim();
+    if(msg === '') return;
+    appendMessage('Tú', msg);
+    chatInput.value = '';
+    setTimeout(() => {
+      appendMessage('IA', getResponse(msg));
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 500);
+  }
+
+  function appendMessage(user, message) {
+    const div = document.createElement('div');
+    div.innerHTML = `<strong>${user}:</strong> ${message}`;
+    div.style.marginBottom = '10px';
+    chatMessages.appendChild(div);
+  }
+
+  function getResponse(msg) {
+    msg = msg.toLowerCase();
+    if(msg.includes('python')) return 'Python es un lenguaje de programación versátil, ideal para IA y automatización.';
+    if(msg.includes('redes neuronales')) return 'Las redes neuronales son modelos inspirados en el cerebro humano para aprendizaje profundo.';
+    if(msg.includes('deep learning')) return 'Deep Learning permite entrenar modelos complejos usando grandes cantidades de datos.';
+    if(msg.includes('curso') || msg.includes('aprendizaje')) return 'Ofrecemos cursos prácticos en Python y desarrollo de IA para todos los niveles.';
+    if(msg.includes('contacto') || msg.includes('teléfono') || msg.includes('email')) return 'Puedes contactarnos al 2235319300, donatoconturla100@gmail.com o nuestro Instagram @donatoacosta12';
+    return '¡Gracias por tu consulta! Estoy aquí para ayudarte a aprender IA y Python.';
+  }
+
+  chatInput.addEventListener('keypress', function(e){
+    if(e.key === 'Enter') sendMessage();
+  });
+
+  // ===== PARTICLES JS =====
+  // Efecto partículas simple con canvas
+  const canvas = document.getElementById('particles-js');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const particles = [];
+  for(let i=0;i<100;i++){
+    particles.push({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
+      radius: Math.random()*2+1,
+      dx: (Math.random()-0.5)*1.5,
+      dy: (Math.random()-0.5)*1.5
+    });
+  }
+
+  function animateParticles(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(let p of particles){
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+      ctx.fillStyle = '#0ff';
+      ctx.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+      if(p.x<0||p.x>canvas.width) p.dx*=-1;
+      if(p.y<0||p.y>canvas.height) p.dy*=-1;
     }
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
 
-}
+  window.addEventListener('resize', ()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+</script>
+
+</body>
+</html>
+
