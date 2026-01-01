@@ -163,6 +163,104 @@ footer{
     0%{ right:-10%; bottom:10%; }
     100%{ right:110%; bottom:15%; }
 }
+
+/* ================= CHATBOX ================= */
+#chat-container{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:320px;
+    max-width:90%;
+    background:rgba(15,0,40,0.95);
+    border:2px solid #7df9ff;
+    border-radius:15px;
+    box-shadow:0 0 25px #00f0ff;
+    display:flex;
+    flex-direction:column;
+    font-size:0.95rem;
+    z-index:9999;
+}
+
+#chat-header{
+    background:linear-gradient(135deg, #6a00ff, #00f0ff);
+    padding:12px;
+    border-top-left-radius:12px;
+    border-top-right-radius:12px;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+    text-align:center;
+}
+
+#chat-messages{
+    flex:1;
+    padding:10px;
+    overflow-y:auto;
+    max-height:300px;
+    color:#e0e0ff;
+}
+
+.message{
+    margin-bottom:12px;
+    padding:8px 12px;
+    border-radius:12px;
+    max-width:80%;
+    word-wrap:break-word;
+}
+
+.message.user{
+    background:#1a1a2e;
+    align-self:flex-end;
+    color:#7df9ff;
+}
+
+.message.bot{
+    background:#33334d;
+    align-self:flex-start;
+    color:#fffcaa;
+}
+
+#chat-input-container{
+    display:flex;
+    border-top:1px solid #444;
+}
+
+#chat-input{
+    flex:1;
+    padding:10px;
+    border:none;
+    border-radius:0 0 0 12px;
+    background:#0b0220;
+    color:#fff;
+}
+
+#chat-input:focus{
+    outline:none;
+}
+
+#chat-send{
+    padding:0 20px;
+    border:none;
+    background:#7df9ff;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:0 0 12px 0;
+    transition:0.3s;
+}
+
+#chat-send:hover{
+    background:#00f0ff;
+}
+
+/* Scrollbar */
+#chat-messages::-webkit-scrollbar{
+    width:6px;
+}
+#chat-messages::-webkit-scrollbar-thumb{
+    background:#7df9ff;
+    border-radius:3px;
+}
 </style>
 </head>
 
@@ -228,6 +326,87 @@ footer{
 <footer>
     © Futuro IA · Tecnología Avanzada · Diseño Futurista
 </footer>
+
+<!-- ================= CHATBOX ================= -->
+<div id="chat-container">
+    <div id="chat-header">🤖 Asistente IA</div>
+    <div id="chat-messages"></div>
+    <div id="chat-input-container">
+        <input type="text" id="chat-input" placeholder="Escribe tu pregunta..." />
+        <button id="chat-send">Enviar</button>
+    </div>
+</div>
+
+<script>
+const chatContainer = document.getElementById('chat-container');
+const chatHeader = document.getElementById('chat-header');
+const chatMessages = document.getElementById('chat-messages');
+const chatInput = document.getElementById('chat-input');
+const chatSend = document.getElementById('chat-send');
+
+let chatOpen = true;
+chatHeader.addEventListener('click', () => {
+    chatOpen = !chatOpen;
+    chatMessages.style.display = chatOpen ? 'block' : 'none';
+    document.getElementById('chat-input-container').style.display = chatOpen ? 'flex' : 'none';
+});
+
+function addMessage(text, sender){
+    const msg = document.createElement('div');
+    msg.classList.add('message', sender);
+    msg.textContent = text;
+    chatMessages.appendChild(msg);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Función básica de IA usando reglas simples
+function aiResponse(userText){
+    const text = userText.toLowerCase();
+
+    if(/(aprendizaje supervisado|supervisado)/.test(text)){
+        return "El aprendizaje supervisado consiste en entrenar modelos usando datos etiquetados para que puedan predecir resultados futuros.";
+    }
+    if(/(aprendizaje no supervisado|no supervisado)/.test(text)){
+        return "El aprendizaje no supervisado busca patrones en datos sin etiquetas, ideal para agrupamiento o reducción de dimensiones.";
+    }
+    if(/deep learning|aprendizaje profundo/.test(text)){
+        return "El Deep Learning utiliza redes neuronales profundas para resolver problemas complejos como visión por computadora y procesamiento de lenguaje natural.";
+    }
+    if(/python/.test(text)){
+        return "Python es un lenguaje versátil y muy usado en Inteligencia Artificial. Puedes usarlo para automatización, análisis de datos y desarrollo de modelos de IA.";
+    }
+    if(/programación|lógica|estructura/.test(text)){
+        return "Aprender programación fortalece la lógica y la resolución de problemas. Python es excelente para empezar y luego avanzar a proyectos de IA.";
+    }
+    if(/contacto|whatsapp|instagram|gmail/.test(text)){
+        return "Puedes contactarnos vía WhatsApp, Instagram o Gmail usando los botones en la sección de contacto.";
+    }
+    if(/hola|buenos días|buenas tardes|hey/.test(text)){
+        return "¡Hola! Soy tu asistente IA, listo para responder tus consultas sobre Inteligencia Artificial y programación.";
+    }
+    return "Lo siento, no entendí tu pregunta. Puedes preguntarme sobre IA, Python, Deep Learning o cómo contactarnos.";
+}
+
+function sendMessage(){
+    const userText = chatInput.value.trim();
+    if(userText === "") return;
+
+    addMessage(userText, 'user');
+    chatInput.value = '';
+
+    setTimeout(() => {
+        const botReply = aiResponse(userText);
+        addMessage(botReply, 'bot');
+    }, 500);
+}
+
+chatSend.addEventListener('click', sendMessage);
+chatInput.addEventListener('keypress', (e)=>{
+    if(e.key === 'Enter'){
+        sendMessage();
+    }
+});
+</script>
 
 </body>
 </html>
